@@ -10,7 +10,8 @@ This solution enables you to create a program to recommend Steam game app for va
 4.	ALS(Alternating Least Squares Method) Recommendations: By using a Matrix Factorization approach we decompose the large user/item matrix into lower dimensional user factors and item factors, which can train model and predict the results fast. We recommended 100+ games for each user (5000+users) 
 
 All the recommendation results were saved in to SQL tables.  A WebApp has been built to fetch these SQL tables and show the recommended games. 
- 
+
+![alt text](http://url/to/img.png) 
 Software environments:
 
 The program needs to be run in a python 3 environments. (Python 3 installation: https://www.python.org/downloads/) 
