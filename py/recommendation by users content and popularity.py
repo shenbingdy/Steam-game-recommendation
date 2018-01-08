@@ -194,7 +194,7 @@ def pre_process_cn(inputs, low_freq_filter):
     st = LancasterStemmer()
     texts_stemmed = [st.stem(word) for word in texts_filtered] 
      
-    #去get rid of low frenquency word
+    #get rid of low frenquency words
     if low_freq_filter:
         stems_once = set(stem for stem in set(texts_stemmed) if texts_stemmed.count(stem) == 1)
         texts = [stem for stem in texts_stemmed if stem not in stems_once] 
@@ -290,3 +290,23 @@ df_user_recom=pd.DataFrame.from_dict(dict_recom,'index')
 df_user_recom.index.name='user_id'
 df_user_recom.reset_index(inplace=True)
 df_user_recom.to_sql('user_recom_userbased',engine, if_exists='replace')
+
+# the item based 
+df_appid_user=pd.DataFrame.from_dict(user_inventory_dict,'columns').fillna(0)
+current=0
+total=df_appid_user.shape[0]
+F_work(0,0,total)
+dict_app_recom={}
+for i in range(total):
+    realtion=np.argsort(-metrics.pairwise.cosine_similarity(df_appid_user[i:i+1],df_appid_user).flatten())[1:101]
+    item_recom=[]
+    for j in realtion:
+        item_recom+=[str(df_appid_user.index[j])]
+    dict_app_recom.update({str(df_appid_user.index[i]):item_recom})
+    F_work(1,current,total)
+    current+=1
+df_app_recom=pd.DataFrame.from_dict(dict_app_recom,'index')
+df_app_recom.columns=['g'+str(x)for x in df_app_recom.columns]
+df_app_recom.index.name='steam_id'
+df_app_recom.reset_index(inplace=True)
+df_app_recom.to_sql('items_recom_itemsbased',engine, if_exists='replace')
