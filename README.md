@@ -11,7 +11,8 @@ This solution enables you to create a program to recommend Steam game app for va
 
 All the recommendation results were saved in to SQL tables.  A WebApp has been built to fetch these SQL tables and show the recommended games. 
 
-![alt text](http://url/to/img.png) 
+![alt text](https://github.com/shenbingdy/Steam-game-recommendation/blob/master/data/webapp.png) 
+
 Software environments:
 
 The program needs to be run in a python 3 environments. (Python 3 installation: https://www.python.org/downloads/) 
