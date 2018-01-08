@@ -18,6 +18,7 @@ Meanwhile, the following libraries were used and some of them need to be install
 (5)	SQLAlchemy
 (6)	Spark
 A SQL software also need to be installed such as my SQL (https://www.mysql.com/)
+
 The program and data
 The data folder contains the all data we used in this program. Some of them were acquired from custom and some of them were from the Steam Web. 
 The Py folder contains all the code: 
